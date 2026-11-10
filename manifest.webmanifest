@@ -5,7 +5,7 @@
   "lang": "de",
   "start_url": "./",
   "scope": "./",
-  "id": "./",
+  "id": "kohlbert",
   "display": "standalone",
   "orientation": "portrait",
   "background_color": "#ed8b00",
