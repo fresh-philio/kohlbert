@@ -1,6 +1,6 @@
 importScripts('alerts.js');
 
-const CACHE = 'kohlbert-v1'; // bei Änderungen hochzählen
+const CACHE = 'kohlbert-v1.01'; // bei Änderungen hochzählen
 const STATE_CACHE = 'kohlbert-state';
 const ASSETS = ['./', 'index.html', 'style.css', 'app.js', 'alerts.js', 'manifest.webmanifest',
   'icon.svg', 'icon-180.png', 'icon-192.png', 'icon-512.png', 'icon-maskable-512.png'];
