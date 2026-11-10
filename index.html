@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <title>Kohlbert</title>
+  <meta name="theme-color" content="#ed8b00">
+  <meta name="description" content="Kohlbert, dein virtuelles Rettich-Haustier">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icon-180.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Kohlbert">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+  <div class="device">
+
+    <div class="topbar">
+      <div class="brand">
+        <span class="tag">Edition DE</span>
+        <h1>KOHLBERT</h1>
+      </div>
+      <div class="tools">
+        <span class="coins" title="Münzen">🪙 <b id="coins">0</b></span>
+        <button id="btnBell" class="tool" title="Benachrichtigungen">🔕</button>
+        <button id="btnSound" class="tool" title="Ton an/aus">🔊</button>
+      </div>
+    </div>
+
+    <div class="screen-frame">
+      <div id="lcd" class="lcd">
+        <!-- Kopfzeile -->
+        <div class="lcd-head">
+          <span>❤️ <span id="statusText">Glücklich</span></span>
+          <span><span id="dayBadge" class="badge">Tag 1</span> <span id="clock" class="mono">12:00</span></span>
+        </div>
+
+        <!-- Bühne: Kohlbert, Haufen, Sprechblase, Panels. Keine Status-Overlays hier drin! -->
+        <div id="stage" class="stage">
+          <canvas id="canvas"></canvas>
+          <div id="poopLayer"></div>
+          <div id="speech" class="speech hidden"></div>
+          <div id="panel" class="panel hidden"></div>
+        </div>
+
+        <!-- Werte liegen UNTER der Bühne und verdecken nichts -->
+        <div class="lcd-stats">
+          <div class="stat"><div class="row"><span>🥨 Hunger</span><b id="vHunger">100%</b></div><div class="bar"><i id="bHunger" class="c-hunger"></i></div></div>
+          <div class="stat"><div class="row"><span>😊 Freude</span><b id="vHappy">100%</b></div><div class="bar"><i id="bHappy" class="c-happy"></i></div></div>
+          <div class="stat"><div class="row"><span>⚡ Energie</span><b id="vEnergy">100%</b></div><div class="bar"><i id="bEnergy" class="c-energy"></i></div></div>
+          <div class="stat"><div class="row"><span>🫧 Sauber</span><b id="vClean">100%</b></div><div class="bar"><i id="bClean" class="c-clean"></i></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pad">
+      <button id="btnFeed" class="btn"><span class="e">🥨</span><span>Füttern</span></button>
+      <button id="btnPlay" class="btn"><span class="e">🎮</span><span>Spielen</span></button>
+      <button id="btnSleep" class="btn"><span class="e">🌙</span><span id="sleepLabel">Schlafen</span></button>
+      <button id="btnClean" class="btn"><span class="e">🚿</span><span>Putzen</span></button>
+      <button id="btnHats" class="btn"><span class="e">🎩</span><span>Hüte</span></button>
+    </div>
+
+    <div class="subrow">
+      <div class="pills">
+        <button id="btnPretzel" class="pill-btn">🥨 Brezel</button>
+        <button id="btnCoffee" class="pill-btn">☕ Kaffee</button>
+      </div>
+      <span class="hint">👆 Kohlbert streicheln</span>
+    </div>
+  </div>
+</div>
+
+<script src="alerts.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
