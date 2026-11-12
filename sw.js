@@ -1,12 +1,17 @@
 importScripts('alerts.js');
 
-const CACHE = 'kohlbert-v1.01'; // bei Änderungen hochzählen
+const CACHE = 'kohlbert-v1-1'; // bei Änderungen hochzählen
 const STATE_CACHE = 'kohlbert-state';
 const ASSETS = ['./', 'index.html', 'style.css', 'app.js', 'alerts.js', 'manifest.webmanifest',
   'icon.svg', 'icon-180.png', 'icon-192.png', 'icon-512.png', 'icon-maskable-512.png'];
 
 self.addEventListener('install', e => {
-  e.waitUntil(caches.open(CACHE).then(c => c.addAll(ASSETS)).then(() => self.skipWaiting()));
+  // cache:'reload' umgeht den HTTP-Cache, sonst landen beim Update ggf. alte Dateien im neuen Cache
+  e.waitUntil(
+    caches.open(CACHE)
+      .then(c => c.addAll(ASSETS.map(u => new Request(u, { cache: 'reload' }))))
+      .then(() => self.skipWaiting())
+  );
 });
 
 self.addEventListener('activate', e => {
@@ -52,8 +57,6 @@ async function backgroundCheck() {
   const a = KB.due(s, t);
   if (!a) return;
 
-  s.lastNotify = s.lastNotify || {};
-  s.lastNotify[a.id] = t;
   const stored = await (await cache.match('state')).json();
   stored.lastNotify = Object.assign({}, stored.lastNotify, { [a.id]: t });
   await cache.put('state', new Response(JSON.stringify(stored)));
